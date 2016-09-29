@@ -1,4 +1,4 @@
-  #This is the main install script for PHAC's IRIDA server on the GVL.
+  #This is the main install script for Pathway Tools server on the GVL.
 
   #check to see if gvl-apps dir is setup and installed
   - name: Check to see if gvl/apps dir exists and create if required
@@ -21,7 +21,18 @@
       - software-properties-common
       - mysql-server
       - python-mysqldb
+      - xvfb
 
+  #set environment DISPLAY variable
+  - name: add export line to the file .bashrc
+    lineinfile:
+      dest=/home/ubuntu/.bashrc
+      line="export DISPLAY=:1"
+      owner=ubuntu
+      state=present
+      insertafter=EOF
+      create=true
+ 
   #Create the Pathway Tools file tree
   - name: create the Pathway Tools file tree
     file: name={{ item }} state=directory owner=ubuntu group=ubuntu
@@ -121,6 +132,7 @@
     copy: src="ptools.locations" dest="{{ nginx_config }}/ptools.locations" mode=0600
     become: yes
     become_user: root
+  
 
   #Copy the info file to the info directory
   - name: "Copy the info file"
@@ -137,5 +149,23 @@
   # Restart Nginx to apply changes
   - name: "restart nginx"
     service: name=nginx state=restarted
+    become: yes
+    become_user: root
+
+  #Download xvfb into /etc/init.d/ folder
+  - name: Download xvfb file for Pathway Tools
+    get_url: url="{{ ptools_xvfb_file }}" dest="{{ xvfb_home }}/xvfb" mode=0755
+    become: yes
+    become_user: root
+
+  #Download run pathwaytools script into /mnt/gvl/apps/scripts folder
+  - name: Download MYSQL web schema file for Pathway Tools
+    get_url: url="{{ ptools_run_file }}" dest="{{ gvl_apps_home }}/scripts/run_pathwaytools.sh" mode=0755
+    become: yes
+    become_user: ubuntu
+
+  # start xvfb 
+  - name: run xvfb
+    action: service name=xvfb state=started
     become: yes
     become_user: root

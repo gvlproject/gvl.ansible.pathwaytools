@@ -9,17 +9,27 @@
   ptools_database: "{{ ptools_home }}/metaDB"
   ptools_mysql_database: "pathwayDB"
   mysql_schema: "{{ ptools_home }}/aic-export/mysql"
+  
+  xvfb_home: "/etc/init.d"
+
   install_env:
         TEMPDIR: "/mnt/gvl/tmp"
         TEMP: "/mnt/gvl/tmp" 
 
+  # DISPLAY
+  #vars:
+  env:
+    DISPLAY: ":1"
+
   nginx_config: "/etc/nginx/sites-enabled"
 
-  #IRIDA URLS:
+  #PATHWAYTOOLS URLS:
   ptools_install_file: "https://swift.rc.nectar.org.au:8888/v1/AUTH_619b0e684ded447596bdb920493e416c/cloudman-os/pathway-tools-19.5-linux-64-t1-mammal-install"
   ptools_web_conf_file: "https://swift.rc.nectar.org.au:8888/v1/AUTH_619b0e684ded447596bdb920493e416c/cloudman-os/ptools-init.dat"
   ptools_database_file: "https://swift.rc.nectar.org.au:8888/v1/AUTH_619b0e684ded447596bdb920493e416c/cloudman-os/meta.tar.gz"
   ptools_mysql_schema_webfile: "https://swift.rc.nectar.org.au:8888/v1/AUTH_619b0e684ded447596bdb920493e416c/cloudman-os/web-accounts.sql"
+  ptools_xvfb_file: "https://swift.rc.nectar.org.au:8888/v1/AUTH_619b0e684ded447596bdb920493e416c/cloudman-os/xvfb"
+  ptools_run_file: "https://swift.rc.nectar.org.au:8888/v1/AUTH_619b0e684ded447596bdb920493e416c/cloudman-os/run_pathwaytools.sh"
 
   # Database info
   database_user: "ptuser"
