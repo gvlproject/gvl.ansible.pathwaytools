@@ -1,6 +1,8 @@
-        location /pathwaytools/ {
-                proxy_set_header X-Forwarded-Host $host;
-                proxy_set_header X-Forwarded-Server $host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_pass http://localhost:1555/pathwaytools/;
+        location /pathwaytools {
+               rewrite ^/pathwaytools(.*)$ http://$host:1555/ permanent;
+               proxy_pass http://localhost:1555/;
+               proxy_set_header Host $host;
+               proxy_set_header X-Real-IP $remote_addr;
+               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+               proxy_redirect off;
         }
