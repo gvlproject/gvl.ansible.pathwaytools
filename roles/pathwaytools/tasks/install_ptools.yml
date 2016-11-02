@@ -91,9 +91,9 @@
   - name: Remove old pathway tools configuration files
     file: path="{{ ptools_conf_home }}/ptools-init.dat" state=absent
 
-  # Download ptools-init.dat into "ptools-local" folder
-  - name: Download pathway tools configuration file
-    get_url: url="{{ ptools_web_conf_file }}" dest="{{ ptools_conf_home }}/ptools-init.dat"
+  # Add pathway tools web server init file
+  - name: "Copy Pathway Tools www init file"
+    copy: src="ptools-init.dat" dest="/mnt/gvl/apps/pathwaytools/ptools-local/ptools-init.dat" mode=0600
     become: yes
     become_user: ubuntu
 
@@ -121,7 +121,7 @@
     become_user: root
     with_items:
       - mysql
-      
+
   # Add file to nginx folder to get web server and nginx to talk nicely
   - name: "Copy nginx config file"
     copy: src="ptools.locations" dest="{{ nginx_config }}/ptools.locations" mode=0600
