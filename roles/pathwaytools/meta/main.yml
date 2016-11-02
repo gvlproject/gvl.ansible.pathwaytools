@@ -1,0 +1,16 @@
+---
+galaxy_info:
+  author: The GVL Project
+  description: Installs Pathway Tools to a GVL server
+  company: The GVL Project
+  license: BSD-4-Clause-UC
+  min_ansible_version: 1.6
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  categories:
+  - system
+  - cloud
+  - pathways
+dependencies:

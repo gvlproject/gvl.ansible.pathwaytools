@@ -2,8 +2,11 @@
   # Pathway tools version
   ptools_version: "19.5"
 
-  # Paths
+  # Paths - GVL
   gvl_apps_home: "/mnt/gvl/apps"
+  gvl_install_path: "/opt/gvl"
+
+  # Paths - Pathway Tools
   ptools_home: "{{ gvl_apps_home }}/pathwaytools"
   ptools_conf_home: "{{ ptools_home }}/ptools-local"
   ptools_database: "{{ ptools_home }}/metaDB"

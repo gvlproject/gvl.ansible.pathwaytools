@@ -122,24 +122,6 @@
     with_items:
       - mysql
 
-  # Add file to nginx folder to get tomcat and nginx to talk nicely
-  - name: "Copy nginx config file"
-    copy: src="ptools.locations" dest="{{ nginx_config }}/ptools.locations" mode=0600
-    become: yes
-    become_user: root
-
-  # Copy the info file to the info directory
-  - name: "Copy the info file"
-    copy: src="ptools.yml" dest="/opt/gvl/info/ptools.yml"
-    become: yes
-    become_user: root
-
-  # Restart Nginx to apply changes
-  - name: "restart nginx"
-    service: name=nginx state=restarted
-    become: yes
-    become_user: root
-
   # Download xvfb into /etc/init.d/ folder
   - name: Download xvfb file for Pathway Tools
     get_url: url="{{ ptools_xvfb_file }}" dest="{{ xvfb_home }}/xvfb" mode=0755
@@ -155,5 +137,20 @@
   # Start xvfb
   - name: run xvfb
     action: service name=xvfb state=started
+    become: yes
+    become_user: root
+
+  # Add file to nginx folder to get web server and nginx to talk nicely
+  - name: "Copy nginx config file"
+    copy: src="ptools.locations" dest="{{ nginx_config }}/ptools.locations" mode=0600
+    become: yes
+    become_user: root
+
+  - name: Copy the version info file into GVLDash
+    template: src=version_info.j2 dest={{ gvl_install_path }}/info/pathway_tools.yml
+
+  # Restart Nginx to apply changes
+  - name: "restart nginx"
+    service: name=nginx state=restarted
     become: yes
     become_user: root
