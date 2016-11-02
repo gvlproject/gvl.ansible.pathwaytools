@@ -1,6 +1,6 @@
 ---
 # file: playbook.yml
-#   Use this file to setup components required for IRIDA
+#   Use this file to setup components required for Pathway Tools
 
 # To install the software, use this role via the following command:
 #

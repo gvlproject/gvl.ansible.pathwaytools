@@ -1,5 +1,5 @@
 ---
-  # Versions
+  # Pathway tools version
   ptools_version: "19.5"
 
   # Paths
@@ -9,21 +9,20 @@
   ptools_database: "{{ ptools_home }}/metaDB"
   ptools_mysql_database: "pathwayDB"
   mysql_schema: "{{ ptools_home }}/aic-export/mysql"
-  
+
   xvfb_home: "/etc/init.d"
 
+  # Environments
   install_env:
         TEMPDIR: "/mnt/gvl/tmp"
-        TEMP: "/mnt/gvl/tmp" 
+        TEMP: "/mnt/gvl/tmp"
 
-  # DISPLAY
-  #vars:
   env:
     DISPLAY: ":1"
 
   nginx_config: "/etc/nginx/sites-enabled"
 
-  #PATHWAYTOOLS URLS:
+  # Pathway tools installation/download URL's
   ptools_install_file: "https://swift.rc.nectar.org.au:8888/v1/AUTH_619b0e684ded447596bdb920493e416c/cloudman-os/pathway-tools-19.5-linux-64-t1-mammal-install"
   ptools_web_conf_file: "https://swift.rc.nectar.org.au:8888/v1/AUTH_619b0e684ded447596bdb920493e416c/cloudman-os/ptools-init.dat"
   ptools_database_file: "https://swift.rc.nectar.org.au:8888/v1/AUTH_619b0e684ded447596bdb920493e416c/cloudman-os/meta.tar.gz"
@@ -34,34 +33,5 @@
   # Database info
   database_user: "ptuser"
   database_pass: "password"
-
-  #tool installation variables
-
-  galaxy_tools_galaxy_instance_url: "http://localhost/galaxy/"
-
-  # A list of yml files that list the tools to be installed. See `files/tool_list.yaml.sample`
-  galaxy_tools_tool_list_files: [ "tool_list.yaml" ]
-
-  # should the playbook continue when errors are found
-  galaxy_tools_ignore_errors: true
-
-  # A system path from where this role will be run
-  galaxy_tools_base_dir: /mnt/galaxy/tmp
-
-  # Blank variable to make sure it's defined
-  galaxy_tools_api_key: ''
-
-  # A user for the Galaxy bootstrap user
-  tools_admin_email: ptools@local.localhost
-  tools_admin_username: ptools
-  tools_admin_password: ptools01
-
-  galaxy_server_dir: /mnt/galaxy/galaxy-app
-
-  # A system path where a virtualend for Galaxy is installed
-  galaxy_venv_dir: "{{ galaxy_server_dir }}/.venv"
-
-  # A system path for Galaxy's main configuration file
-  galaxy_config_file: "{{ galaxy_server_dir }}/config/galaxy.ini"
 
 ...
