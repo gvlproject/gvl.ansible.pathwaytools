@@ -6,7 +6,7 @@
 
 [ -d "/mnt/gvl/apps" ] || mkdir -p /mnt/gvl/apps # ensure /mnt/gvl/apps exists
 cd /opt/gvl
-if [ -d "/opt/gvl/gvl.ansible.web_apollo" ]; then
+if [ -d "/opt/gvl/gvl.ansible.pathwaytools" ]; then
   git pull https://github.com/gvlproject/gvl.ansible.pathwaytools
 else
   git clone -b release_GVL_4.1 https://github.com/gvlproject/gvl.ansible.pathwaytools
