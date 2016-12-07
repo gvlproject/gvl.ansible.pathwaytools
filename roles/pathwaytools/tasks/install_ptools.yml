@@ -143,8 +143,14 @@
     become: yes
     become_user: root
 
+  # copy autostart pathwaytools script into /mnt/gvl/apps/scripts folder
+  - name: copy autostart Pathway Tools script into script directory
+    copy: src="pathwaytools.sh" dest="{{ gvl_apps_home }}/scripts/pathwaytools.sh" mode=0755
+    become: yes
+    become_user: ubuntu
+
   # Download run pathwaytools script into /mnt/gvl/apps/scripts folder
-  - name: Download MYSQL web schema file for Pathway Tools
+  - name: copy Pathway Tools script into script directory 
     get_url: url="{{ ptools_run_file }}" dest="{{ gvl_apps_home }}/scripts/run_pathwaytools.sh" mode=0755
     become: yes
     become_user: ubuntu

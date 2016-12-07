@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#put this script in this folder /mnt/galaxy/gvl/poststart.d/
+service xvfb start
+/mnt/gvl/apps/scripts/pathwaytools.sh start
