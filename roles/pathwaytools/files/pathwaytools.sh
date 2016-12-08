@@ -1,7 +1,7 @@
-#!/bin/bash 
+#!/bin/bash
 
 #save this script in this folder /mnt/gvl/apps/scripts/
-SCREEN=/usr/bin/screen
+SCREEN="/usr/bin/screen"
 
 PTOOLSARGS="-m -d /mnt/gvl/apps/pathwaytools/pathway-tools -www -www-publish all"
 
@@ -27,7 +27,6 @@ case "$1" in
   stop)
     echo -n "Stopping pathway tools"
     start-stop-daemon --stop --quiet --pidfile ${PIDFILE1}
-    #start-stop-daemon --stop --quiet --pidfile ${PIDFILE2}
     if [[ -f ${PIDFILE2} ]];
     then
       kill -9 $(cat ${PIDFILE2})
@@ -41,8 +40,6 @@ case "$1" in
     echo "."
     ;;
   restart)
-    PID2=`ps aux | grep "pathway-tools" | grep -v grep | grep "pathway-tools-runtime" | awk '{print $2}'`
-    echo $PID2
     $0 stop
     $0 start
     ;;
