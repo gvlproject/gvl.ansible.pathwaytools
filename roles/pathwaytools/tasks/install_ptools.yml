@@ -6,11 +6,11 @@
     become: yes
     become_user: root
 
-  # Do an apt-get update
-  - name: Update the apt cache
-    apt: update_cache=yes
-    become: yes
-    become_user: root
+  # Do an apt-get update (comment out for GVL 4.1 otherwise this block will stop ansible-playbook from running)
+  #- name: Update the apt cache
+  #  apt: update_cache=yes
+  #  become: yes
+  #  become_user: root
 
   # Install some extra system packages:
   - name: install required extra system packages
@@ -150,7 +150,7 @@
     become_user: ubuntu
 
   # Download run pathwaytools script into /mnt/gvl/apps/scripts folder
-  - name: copy Pathway Tools script into script directory 
+  - name: copy Pathway Tools script into script directory
     get_url: url="{{ ptools_run_file }}" dest="{{ gvl_apps_home }}/scripts/run_pathwaytools.sh" mode=0755
     become: yes
     become_user: ubuntu
