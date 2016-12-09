@@ -18,7 +18,9 @@ case "$1" in
         exit 0
     fi
     start-stop-daemon --start --quiet --pidfile $PIDFILE1 --make-pidfile --background --exec $SCREEN -- $PTOOLSARGS
+    sleep 1
     PID1=`ps aux | grep "pathway-tools" | grep -v grep | grep -v "pathway-tools-runtime" | awk '{print $2}'`
+    sleep 1
     PID2=`ps aux | grep "pathway-tools" | grep -v grep | grep "pathway-tools-runtime" | awk '{print $2}'`
     echo $PID1 > $PIDFILE1
     echo $PID2 > $PIDFILE2
