@@ -2,5 +2,5 @@
 
 #put this script in this folder /mnt/galaxy/gvl/poststart.d/
 
-service xvfb start
+export DISPLAY=:1
 /mnt/gvl/apps/scripts/pathwaytools.sh start
