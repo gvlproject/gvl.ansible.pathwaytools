@@ -1,7 +1,7 @@
 # gvl.ansible.pathwaytools
 
-Ansible script to install the **Pathway Tools** project into the GVL.
+This ansible script is used to install and integrate the **Pathway Tools** project into the GVL.
 
-  * It will be located at http://your_server_ip/pathwaytools
+  * It will be located at http://your_server_ip:9605 or  http://your_server_ip/pathwaytools 
 
-  * It runs pathway tools on port 1555
+  * It runs pathway tools on port 9605

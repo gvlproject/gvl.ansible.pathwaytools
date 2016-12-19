@@ -1,7 +1,7 @@
 
 #!/bin/bash
 #####################################################
-# script run on target machine to install Web Apollo
+# script run on target machine to install Pathway Tools
 #####################################################
 
 [ -d "/mnt/gvl/apps" ] || mkdir -p /mnt/gvl/apps # ensure /mnt/gvl/apps exists
