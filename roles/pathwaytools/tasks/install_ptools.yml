@@ -149,11 +149,17 @@
     become: yes
     become_user: ubuntu
 
-  # Download run pathwaytools script into /mnt/gvl/apps/scripts folder
-  - name: copy Pathway Tools script into script directory
-    get_url: url="{{ ptools_run_file }}" dest="{{ gvl_apps_home }}/scripts/run_pathwaytools.sh" mode=0755
+  # copy autostart pathwaytools script into /mnt/gvl/apps/scripts folder
+  - name: copy autostart Pathway Tools script into script directory
+    copy: src="ptoolsService" dest="{{ gvl_apps_home }}/scripts/ptoolsService" mode=0755
     become: yes
     become_user: ubuntu
+
+  # Download run pathwaytools script into /mnt/gvl/apps/scripts folder
+  #- name: copy Pathway Tools script into script directory
+  #  get_url: url="{{ ptools_run_file }}" dest="{{ gvl_apps_home }}/scripts/run_pathwaytools.sh" mode=0755
+  #  become: yes
+  #  become_user: ubuntu
 
   # Start xvfb
   - name: run xvfb
