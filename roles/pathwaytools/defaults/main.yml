@@ -35,6 +35,6 @@
 
   # Database info
   database_user: "ptuser"
-  database_pass: "password"
+  database_pass: "DBuser1!"
 
 ...
