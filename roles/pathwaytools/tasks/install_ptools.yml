@@ -32,6 +32,12 @@
       state=present
       insertafter=EOF
       create=true
+      
+  # Create ptools_temp  directory if it doesn't exist
+  - name: Create ptools_temp directory in /mnt/gvl/tmp
+    file: path="/mnt/gvl/tmp/ptools_temp" state=directory owner=ubuntu group=ubuntu mode=0755
+    become: yes
+    become_user: ubuntu
 
   # Create the Pathway Tools file tree
   - name: create the Pathway Tools file tree
