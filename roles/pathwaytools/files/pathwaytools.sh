@@ -4,6 +4,7 @@
 SCREEN="/usr/bin/screen"
 
 PTOOLSARGS="-m -d /mnt/gvl/apps/pathwaytools/pathway-tools -www -www-publish all"
+export CWEST_TEMP=/mnt/gvl/tmp/ptools_temp
 
 PIDFILE1=/tmp/pathwaytools.pid
 PIDFILE2=/tmp/pathwaytools_runtime.pid
